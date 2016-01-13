@@ -57,7 +57,7 @@ ROOT_URLCONF = 'soccer.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates').replace('\\', '/'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -65,6 +65,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
             ],
         },
     },
@@ -80,10 +81,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'libdb',
-        'USER':'dbuser',
-        'PASSWORD':'zyg12345',
-        'HOST':'127.0.0.1',
-        'PORT':'5432'    }
+        'USER': 'dbuser',
+        'PASSWORD': 'zyg12345',
+        'HOST': '127.0.0.1',
+        'PORT': '5432'}
 }
 
 
@@ -122,5 +123,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
-
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static').replace('\\', '/'),)
 STATIC_URL = '/static/'
+# STATIC_ROOT = "/var/www/example.com/static/"

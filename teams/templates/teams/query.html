@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>SQL QUERY </title>
+
+    <meta name="description" content="Source code generated using layoutit.com">
+   
+
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    
+
+  </head>
+  <body>
+
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<h3 class="text-muted text-center">
+				PLEASE INPUT THE  QUERY OF SQL 
+			</h3>
+			<form name="input" action="query" method="post" class="form-horizontal" >
+				<div class="form-group">
+					 
+					<label for="inputSQL" class="col-sm-2 control-label" >
+						SQL
+					</label>
+					<div class="col-sm-8">
+						<input type="text" name="sql" class="form-control" placeholder="SQL input" id="inputSQL">
+						<span id="helpBlock" class="help-block">你可以在這裏輸入SQL語句。</span>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button id="btn1" type="submit" class="btn btn-primary btn-lg">
+							提交
+						</button>
+					</div>
+				</div>
+
+				<div id="display">
+					<p class="text-center text-success lead" id="result"></p>
+					<div  id="resultdisplay">
+					</div>	
+				</div>
+
+			</form> 
+
+			<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+				
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav nav-pills">
+						<li >
+							<a href="/home">HOME</a>
+						</li>
+						<li class="active">
+							<a href="/query">QUERY</a>
+						</li>
+		                                                    <li>
+		                                                       <a href="/transaction/match">TRANSACTION</a>
+		                                                   </li>									
+						<li class="divider">
+						</li>
+							</ul>
+						</li>
+					</ul>
+
+				</div>
+				
+			</nav>
+		</div>
+	</div>
+</div>
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+   <script type="text/javascript">
+$(document).ready(function(){
+  	var  a=0
+  	var query_id={{query_id}};
+  	var rows_act={{rows_act}};
+	if (query_id==4)
+	{
+	document.getElementById("resultdisplay").innerHTML =
+
+	"<table border='1' align='center' class='table table-hover table-bordered' >"+
+	"<caption><b>查詢到的訊息<b></caption>"+
+	"<tr align='center'>"+
+	"{% for attr in attributes %}"+
+	"<th><b>{{ attr|title }}<b></th>"+
+	"{% endfor %}"+
+	"</tr>"+
+	"{%for row in rows%}"+
+	"<tr align='center'>"+
+	"{% for col in row%}"+
+	"<td>{{col}}</td>"+
+	"{% endfor %}"+
+	"</tr>"+
+	"{% endfor %}"+
+	"</table>";
+
+	}
+	else if (query_id==3)
+	{
+	document.getElementById("result").innerHTML ="成功的完成了"+rows_act+"筆<b>UPDATE</b>操作";
+	}
+        	else if (query_id==2)
+        	{
+	document.getElementById("result").innerHTML ="成功的完成了"+rows_act+"筆<b>DELETE</b>操作";
+	}
+        	else if(query_id==1)
+        	{
+	document.getElementById("result").innerHTML ="成功的完成了"+rows_act+"筆<b>INSERT</b>操作";
+	}
+	else if(query_id==0)
+	{
+	document.getElementById("result").innerHTML ="請重新輸入，您輸入的爲空指令";
+	}
+	else if(query_id==5)
+	{
+	document.getElementById("result").innerHTML ="請重新輸入，您輸入的爲错误指令或者data的pk已經存在";
+	}
+
+});
+   </script>
+
+  </body>
+</html>

@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>SQL TRANSACTION</title>
+
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/css/bootstrap-select.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <style type="text/css">
+#bootstrapSelectForm .selectContainer .form-control-feedback {
+    /* Adjust feedback icon position */
+    right: -15px;
+}
+</style>
+  </head>
+  <body>
+
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<h3 class="text-center">
+				請選擇相應的數據庫事務
+			</h3>
+			<div class="tabbable"  id="tabs">
+				<ul class="nav nav-tabs">
+					<li >
+						<a href="#Match" data-toggle="tab" >Match</a>
+					</li>
+					<li >
+						<a href="#Team" data-toggle="tab">Team</a>
+					</li>
+					<li class="active">
+						<a href="#Player" data-toggle="tab">Player</a>
+					</li>
+					<li >
+						<a href="#Coach" data-toggle="tab">Coach</a>
+					</li>
+					<li >
+						<a href="#Sponsor" data-toggle="tab">Sponsor</a>
+					</li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane " id="Match">
+  					      <form class="form-horizontal"name="input"  method="post" >
+						<!--<fieldset>
+						<!-- Form Name -->
+						<legend>The Transactions of  Matches</legend>
+						<!-- Button Drop Down -->
+						<div class="form-group">
+						  <label class="col-md-4 control-label" for="sql_words">select</label>
+						  <div class="col-md-3">
+						    <div class="input-group">
+						      <input id ='demo1' name='o1' class="form-control" placeholder="請輸入要查詢的關鍵值" type="text">
+       						         <select  class="form-control " id="sel_op1" >
+						          <option value="match_id_s" >Match_id</option>
+						          <option value="match_code_s">Match_code</option>
+						          <option value="team_home_goals_s">Team home goals</option>
+						          <option value="team_away_goals_s">Team away goals</option>
+						        </select>
+						      </div>
+
+						  </div>
+							<input type="submit"id="bt_m1" onclick="myFunction1()" class="btn btn-primary" value="提交">
+						</div>
+			 		     </form>
+
+						<!-- Button Drop Down -->
+					     <form class="form-horizontal"name="input"  method="post" >
+						<div class="form-group">
+						  <label class="col-md-4 control-label" for="sql_words">delete</label>
+						  <div class="col-md-3">
+						    <div class="input-group">
+						      <input id ='demo2' name='o1'  class="form-control" placeholder="請輸入要查詢的關鍵值" type="text">
+       						         <select  class="form-control "id="sel_op2" >
+						          <option value="match_id_d">Match_id</option>
+						          <option value="match_code_d">Match_code</option>
+						          <option value="team_home_goals_d">Team home goals</option>
+						          <option value="team_away_goals_d">Team away goals</option>
+						        </select>
+						      </div>
+
+						  </div>
+							<input type="submit" id="bt_m1" onclick="myFunction2()" class="btn btn-primary" value="提交">
+						</div>
+			 	        	        </form>			
+						<!-- Button Drop Down -->
+					       <form class="form-horizontal"name="input"  method="post" >
+						<div class="form-group">
+						  <label class="col-md-4 control-label" for="sql_words">update</label>
+						  <div class="col-md-3">
+						    <div class="input-group">
+						      <input id ='demo3' name='o1'  class="form-control" placeholder="請輸入要查詢的關鍵值" type="text">
+       						         <select  class="form-control "id="sel_op3" >
+						          <option value="match_id_u">Match_id</option>
+						          <option value="match_code_u">Match_code</option>
+					<!--	          <option value="team_home_goals_u">Team home goals</option>
+						          <option value="team_away_goals_u">Team away goals</option>-->
+						        </select>
+							<input id ='demo16' name='o2'  class="form-control" placeholder="請輸入要更改的Match_id值,可以爲空" type="text">
+       						         <select  class="form-control "id="sel_op16" >
+			<!--			          <option value="id_new">new Match_id</option>-->
+						          <option value="code_new">new Match_code</option>
+						          <option value="home_goals_new">new Team home goals</option>
+						          <option value="away_goals_new">new Team away goals</option>
+						        </select>
+				<!--		     	 <input id ='demo3' name='code_new'  class="form-control" placeholder="請輸入要更改的Match_code值,可以爲空" type="text">
+						      	<input id ='demo3' name='home_goals_new'  class="form-control" placeholder="請輸入要更改的Team home goals值,可以爲空" type="text">
+							 <input id ='demo3' name='away_goals_new'  class="form-control" placeholder="請輸入要更改的Team away goals值,可以爲空" type="text">	-->							        
+						      </div>
+
+						  </div>
+							<input type="submit"id="bt_m1" onclick="myFunction3()" class="btn btn-primary" value="提交">
+						</div>
+			 		        </form>			
+						<!-- Text input-->
+					       <form class="form-horizontal"name="input"  method="post" >
+						<div class="form-group">
+						  <label class="col-md-4 control-label" for="textinput">insert</label>  
+						  <div class="col-md-3">
+						  <input id="textinput" name="textinput" type="text" placeholder="請輸入要查詢的關鍵值" class="form-control input-md" required="">
+						  <span class="help-block">請依次輸入Match_id，Match_code，Team_home_goals，Team_away_goals的值，以&分隔格式爲：int&char&int&int。</span>  
+						  </div>
+						  <button type="submit" class="btn btn-primary">提交</button>
+						</div>
+						
+						<!--</fieldset>-->
+					     </form>			
+					</div>
+					<div class="tab-pane " id="Team">
+  					     <form class="form-horizontal"name="input"  method="post" >
+						<!--<fieldset>
+						<!-- Form Name -->
+						<legend>The Transactions of  Teams</legend>
+						<!-- Button Drop Down -->
+						<div class="form-group">
+						  <label class="col-md-4 control-label" for="sql_words">select</label>
+						  <div class="col-md-3">
+						    <div class="input-group">
+						      <input id ='demo4' name='o1'  class="form-control" placeholder="請輸入要查詢的關鍵值" type="text">
+       						         <select  class="form-control "id="sel_op4" >
+						          <option value="team_code">Team_code</option>
+						          <option value="country_name">Country name</option>
+						          <option value="country_code">Country code</option>
+						          <option value="total_score">Total score</option>
+						        </select>
+						      </div>
+
+						  </div>
+							<input type="submit"id="bt_m1" onclick="myFunction4()" class="btn btn-primary" value="提交">
+						</div>
+					        </form>
+						<!-- Button Drop Down -->
+						<form class="form-horizontal"name="input"  method="post" >
+						<div class="form-group">
+						  <label class="col-md-4 control-label" for="sql_words">delete</label>
+						  <div class="col-md-3">
+						    <div class="input-group">
+						      <input id ='demo5' name='o1'  class="form-control" placeholder="請輸入要查詢的關鍵值" type="text">
+       						         <select  class="form-control "id="sel_op5" >
+						          <option value="team_code">Team_code</option>
+						          <option value="country_name">Country name</option>
+						          <option value="country_code">Country code</option>
+						          <option value="total_score">Total score</option>
+						        </select>
+						      </div>
+
+						  </div>
+							<input type="submit"id="bt_m1" onclick="myFunction5()" class="btn btn-primary" value="提交">
+						</div>
+						</form>			
+						<!-- Button Drop Down -->
+						<form class="form-horizontal"name="input"  method="post" >
+						<div class="form-group">
+						  <label class="col-md-4 control-label" for="sql_words">update</label>
+						  <div class="col-md-3">
+						    <div class="input-group">
+						      <input id ='demo6' name='o1'  class="form-control" placeholder="請輸入要查詢的關鍵值" type="text">
+       						         <select  class="form-control "id="sel_op6" >
+						          <option value="team_code">Team_code</option>
+						          <option value="country_name">Country name</option>
+						          <option value="country_code">Country code</option>
+						          <option value="total_score">Total score</option>
+						        </select>
+						      </div>
+
+						  </div>
+							<input type="submit"id="bt_m1" onclick="myFunction6()" class="btn btn-primary" value="提交">
+						</div>
+						</form>			
+						
+						<!-- Text input-->
+						<form class="form-horizontal"name="input"  method="post" >
+						<div class="form-group">
+						  <label class="col-md-4 control-label" for="textinput">insert</label>  
+						  <div class="col-md-3">
+						  <input id="textinput" name="textinput" type="text" placeholder="請輸入要查詢的關鍵值" class="form-control input-md" required="">
+						  <span class="help-block">請依次輸入Team_code,Country_name,Country_code,Total_score,m_id的值,格式为(int,char,char,int)</span>  
+						  </div>
+						  <button type="submit" class="btn btn-primary">提交</button>
+						</div>
+						
+				<!--		</fieldset>-->
+					    	 </form>	
+					</div>
+<!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
+					<div class="tab-pane active" id="Player">
+  					      <form class="form-horizontal"name="input"  method="post" >
+					<!--	<fieldset>
+						Form Name -->
+						<legend>The Transactions of <b>Players</b> </legend>
+						<!-- Button Drop Down -->
+						<div class="form-group">
+						  <label class="col-md-4 control-label" for="sql_words">select</label>
+						  <div class="col-md-3">
+						    <div class="input-group">
+						      <input id ='demo7' name='o1'  class="form-control" placeholder="請輸入要查詢的關鍵值" type="text">
+       						         <select  class="form-control "id="sel_op7" >
+						          <option value="player_code_s">Player_code</option>
+						          <option value="player_name_s">Player_name</option>
+						          <option value="player_loc_s">Player location</option>
+						          <option value="player_height_s">Player height<option>
+						        </select>
+						      </div>
+
+						  </div>
+							<input type="submit"id="bt_m1" onclick="myFunction7()" class="btn btn-primary" value="提交">
+						</div>
+					    </form>
+						<!-- Button Drop Down -->
+						<form class="form-horizontal"name="input"  method="post" >	
+						<div class="form-group">
+						  <label class="col-md-4 control-label" for="sql_words">delete</label>
+						  <div class="col-md-3">
+						    <div class="input-group">
+						      <input id ='demo8' name='o1'  class="form-control" placeholder="請輸入要查詢的關鍵值" type="text">
+       						         <select  class="form-control "id="sel_op8" >
+						          <option value="player_code_d">Player_code</option>
+						          <option value="player_name_d">Player_name</option>
+						          <option value="player_loc_d">Player location</option>
+						          <option value="player_height_d">Player height<option>
+						        </select>
+						      </div>
+
+						  </div>
+							<input type="submit"id="bt_m1" onclick="myFunction8()" class="btn btn-primary" value="提交">
+						</div>
+						</form>		
+						<!-- Button Drop Down -->
+						<form class="form-horizontal"name="input"  method="post" >
+						<div class="form-group">
+						  <label class="col-md-4 control-label" for="sql_words">update</label>
+						  <div class="col-md-3">
+						    <div class="input-group">
+						      <input id ='demo9' name='o1'  class="form-control" placeholder="請輸入要查詢的關鍵值" type="text">
+       						         <select  class="form-control "id="sel_op9" >
+						          <option value="player_code_u">Player code</option>
+						          <option value="player_name_u">Player name</option>
+		<!--				          <option value="player_loc">Player location</option>
+						          <option value="player_height">Player height<option>-->
+						        </select>
+							<input id ='demo18' name='o2'  class="form-control" placeholder="請輸入要更改的Match_id值,可以爲空" type="text">
+       						         <select  class="form-control "id="sel_op18" >
+			<!--			          <option value="id_new">new Match_id</option>-->
+						          <option value="player_name_new">new new Player name</option>
+						          <option value="player_loc_new">new Player location</option>
+						          <option value="player_height_new">new Player height</option>
+						        </select>	
+						      </div>
+
+						  </div>
+							<input type="submit"id="bt_m1" onclick="myFunction9()" class="btn btn-primary" value="提交">
+						</div>
+						
+
+						</form>		
+						<!-- Text input-->
+						<form class="form-horizontal"name="input"  method="post" >
+						<div class="form-group">
+						  <label class="col-md-4 control-label" for="textinput">insert</label>  
+						  <div class="col-md-3">
+						  <input id="textinput" name="textinput" type="text" placeholder="請輸入要查詢的關鍵值" class="form-control input-md" required="">
+						  <span class="help-block">請依次輸入Player_code,Player_name,Player_location,Player_height,coach_id,team_id的值，以&分隔格式爲：int&char&char&int&int&int。</span>  
+						  </div>
+						  <button type="submit" class="btn btn-primary">提交</button>
+						</div>
+						
+						<!--</fieldset>-->
+					     	</form>	
+					</div>
+
+<!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
+
+					<div class="tab-pane" id="Coach">
+  					      <form class="form-horizontal"name="input"  method="post" >
+					<!--	<fieldset>
+						 Form Name -->
+						<legend>The Transactions of  Coaches</legend>
+						<!-- Button Drop Down -->
+						<div class="form-group">
+						  <label class="col-md-4 control-label" for="sql_words">select</label>
+						  <div class="col-md-3">
+						    <div class="input-group">
+						      <input id ='demo10' name='o1'  class="form-control" placeholder="請輸入要查詢的關鍵值" type="text">
+       						         <select  class="form-control "id="sel_op10" >
+						          <option value="coach_code">Coach_code</option>
+						          <option value="coach_name">Coach_name</option>
+						          <option value="coach_country">Coach_country</option>
+						          <option value="coach_team">Coach_team</option>
+						        </select>
+						      </div>
+
+						  </div>
+							<input type="submit"id="bt_m1" onclick="myFunction10()" class="btn btn-primary" value="提交">
+						</div>
+						</form>
+						<!-- Button Drop Down -->
+						<form class="form-horizontal"name="input"  method="post" >
+						<div class="form-group">
+						  <label class="col-md-4 control-label" for="sql_words">delete</label>
+						  <div class="col-md-3">
+						    <div class="input-group">
+						      <input id ='demo11' name='o1'  class="form-control" placeholder="請輸入要查詢的關鍵值" type="text">
+       						         <select  class="form-control "id="sel_op11" >
+						          <option value="coach_code">Coach_code</option>
+						          <option value="coach_name">Coach_name</option>
+						          <option value="coach_country">Coach_country</option>
+						          <option value="coach_team">Coach_team</option>
+						        </select>
+						      </div>
+
+						  </div>
+							<input type="submit"id="bt_m1" onclick="myFunction11()" class="btn btn-primary" value="提交">
+						</div>
+						</form>		
+						<!-- Button Drop Down -->
+						<form class="form-horizontal"name="input"  method="post" >
+						<div class="form-group">
+						  <label class="col-md-4 control-label" for="sql_words">update</label>
+						  <div class="col-md-3">
+						    <div class="input-group">
+						      <input id ='demo12' name='o1'  class="form-control" placeholder="請輸入要查詢的關鍵值" type="text">
+       						         <select  class="form-control "id="sel_op12" >
+						          <option value="coach_code">Coach_code</option>
+						          <option value="coach_name">Coach_name</option>
+						          <option value="coach_country">Coach_country</option>
+						          <option value="coach_team">Coach_team</option>
+						        </select>
+						      </div>
+
+						  </div>
+							<input type="submit"id="bt_m1" onclick="myFunction12()" class="btn btn-primary" value="提交">
+						</div>
+						
+						</form>		
+						<!-- Text input-->
+						<form class="form-horizontal"name="input"  method="post" >
+						<div class="form-group">
+						  <label class="col-md-4 control-label" for="textinput">insert</label>  
+						  <div class="col-md-3">
+						  <input id="textinput" name="textinput" type="text" placeholder="請輸入要查詢的關鍵值" class="form-control input-md" required="">
+						  <span class="help-block">請依次輸入Coach_code,Coach_name,Coach_country,Coach_team的值,格式为(int,char,char,int)</span>  
+						  </div>
+						  <button type="submit"  class="btn btn-primary">提交</button>
+						</div>
+						
+				<!--		</fieldset>-->
+					    	 </form>	
+					</div>
+					<div class="tab-pane " id="Sponsor">
+  					      <form class="form-horizontal"name="input"  method="post" >
+					<!--	<fieldset>
+						<!-- Form Name -->
+						<legend>The Transactions of  Sponsors</legend>
+						<!-- Button Drop Down -->
+						<div class="form-group">
+						  <label class="col-md-4 control-label" for="sql_words">select</label>
+						  <div class="col-md-3">
+						    <div class="input-group">
+						      <input id ='demo13' name='o1'  class="form-control" placeholder="請輸入要查詢的關鍵值" type="text">
+       						         <select  class="form-control "id="sel_op13" >
+						          <option value="nasdaq">Nasdaq</option>
+						          <option value="sponsor_name">Sponsor_name</option>
+						          <option value="loc_of_sponsor">Location of sponsor</option>
+						        </select>
+						      </div>
+
+						  </div>
+							<input type="submit"id="bt_m1" onclick="myFunction13()" class="btn btn-primary" value="提交">
+						</div>
+						</form>
+						<!-- Button Drop Down -->
+						<form class="form-horizontal"name="input"  method="post" >
+						<div class="form-group">
+						  <label class="col-md-4 control-label" for="sql_words">delete</label>
+						  <div class="col-md-3">
+						    <div class="input-group">
+						      <input id ='demo14' name='o1'  class="form-control" placeholder="請輸入要查詢的關鍵值" type="text">
+       						         <select  class="form-control "id="sel_op14" >
+						          <option value="nasdaq">Nasdaq</option>
+						          <option value="sponsor_name">Sponsor_name</option>
+						          <option value="loc_of_sponsor">Location of sponsor</option>
+						        </select>
+						      </div>
+
+						  </div>
+							<input type="submit"id="bt_m1" onclick="myFunction14()" class="btn btn-primary" value="提交">
+						</div>
+						</form>		
+						<!-- Button Drop Down -->
+						<form class="form-horizontal"name="input"  method="post" >
+						<div class="form-group">
+						  <label class="col-md-4 control-label" for="sql_words">update</label>
+						  <div class="col-md-3">
+						    <div class="input-group">
+						      <input id ='demo15' name='o1'  class="form-control" placeholder="請輸入要查詢的關鍵值" type="text">
+       						         <select  class="form-control "id="sel_op15" >
+						          <option value="nasdaq">Nasdaq</option>
+						          <option value="sponsor_name">Sponsor_name</option>
+						          <option value="loc_of_sponsor">Location of sponsor</option>
+						        </select>
+						      </div>
+
+						  </div>
+							<input type="submit"id="bt_m1" onclick="myFunction15()" class="btn btn-primary" value="提交">
+						</div>
+						
+						</form>		
+						<!-- Text input-->
+						<form class="form-horizontal"name="input"  method="post" >
+						<div class="form-group">
+						  <label class="col-md-4 control-label" for="textinput">insert</label>  
+						  <div class="col-md-3">
+						  <input id="textinput" name="textinput" type="text" placeholder="請輸入要查詢的關鍵值" class="form-control input-md" required="">
+						  <span class="help-block">請依次輸入Nasdaq，Sponsor_name，Location of sponsor的值,格式为(int,char,char)</span>  
+						  </div>
+						  <button type="submit"  class="btn btn-primary">提交</button>
+						</div>
+
+					    	 </form>
+			    	 	
+					</div>					
+				<div id="display">
+					<p class="text-center text-success lead" id="result"></p>
+					<div  id="resultdisplay">
+					</div>	
+				</div>		
+				</div>
+			</div>
+
+
+
+
+
+
+			<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+				
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav nav-pills">
+						<li >
+							<a href="/home">HOME</a>
+						</li>
+						<li>
+							<a href="/query">QUERY</a>
+						</li>
+   		                                                    <li >
+   		                                                       <a href="/transaction/match">TRANSACTION-match</a>
+   		                                                   </li>						
+   		                                                    <li >
+   		                                                       <a href="/transaction/team">TRANSACTION-team</a>
+   		                                                   </li>		
+   		                                                    <li class="active">
+   		                                                       <a href="/transaction/player">TRANSACTION-player</a>
+   		                                                   </li>		
+
+   		                                                    <li >
+   		                                                       <a href="/transaction/coach">TRANSACTION-coach</a>
+   		                                                   </li>		
+
+   		                                                    <li >
+   		                                                       <a href="/transaction/sponsor">TRANSACTION-sponsor</a>
+   		                                                   </li>
+							</ul>
+						</li>
+					</ul>
+
+				</div>
+				
+			</nav>
+		</div>
+	</div>
+</div>
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  	var error_code={{error_code}};
+
+  	var action_code={{action_code}};
+  	if(error_code==0){
+	if (action_code==1)
+	{
+	document.getElementById("resultdisplay").innerHTML =
+
+	"<table border='1' align='center' class='table table-hover table-bordered' >"+
+	"<caption><b>查詢到的訊息<b></caption>"+
+	"<tr align='center'>"+
+	"<td><b>player_code<b></td>"+
+	"<td><b>player_name</b></td>"+
+	"<td><b>player_location</b></td>"+
+	"<td><b>player_height</b></td>"+
+	"</tr>"+
+	"{% for i in player %}"+
+	"<tr align='center'>"+
+	"<td>{{i.player_code}}</td>"+
+	"<td>{{i.player_name}}</td>"+
+	"<td>{{i.player_loc}}</td>"+
+	"<td>{{i.player_height}}</td>"+
+	"</tr>"+
+	"{% endfor %}"+
+	"</table>"
+	}
+	else if (action_code==2)
+	{
+	document.getElementById("result").innerHTML ="成功的完成了"+'{{del_num}}'+"筆<b>DELETE</b>操作";
+	}
+        	else if (action_code==3)
+        	{
+	document.getElementById("result").innerHTML ="成功的完成了"+'{{up_num}}'+"筆<b>UPDATE</b>操作";
+	}
+        	else if(action_code==4)
+        	{
+	document.getElementById("result").innerHTML ="成功的完成了"+'{{in_num}}'+"筆<b>INSERT</b>操作";
+	}
+	}
+	else if (error_code==1){
+	document.getElementById("result").innerHTML ="請重新輸入，您輸入的爲空指令";
+	}
+	else if (error_code==2){
+	document.getElementById("result").innerHTML ="无相关信息";
+	}
+	else if (error_code==3){
+	document.getElementById("result").innerHTML ="无相关信息";
+	}
+	else if (error_code==11){
+	document.getElementById("result").innerHTML ="沒有新的數據插入";
+	}	
+	else if (error_code==5){
+	document.getElementById("result").innerHTML ="此數據已經存在";
+	}		
+	else if (error_code==6){
+	document.getElementById("result").innerHTML ="不符合輸入規定";
+	}	
+});
+   </script>
+
+<script type="text/javascript" charset="utf-8">
+function myFunction1() {
+	var x=document.getElementById("sel_op1").value
+	var y=document.getElementById("demo1").name = x;
+  //alert(y);
+}
+function myFunction2() {
+	var x=document.getElementById("sel_op2").value
+	var y=document.getElementById("demo2").name = x;
+  //alert(y);
+}
+function myFunction3() {
+	var x=document.getElementById("sel_op3").value
+	var y=document.getElementById("demo3").name = x;
+
+	var x1=document.getElementById("sel_op16").value
+	var y1=document.getElementById("demo16").name = x1;
+
+
+  //alert(y);
+}
+function myFunction4() {
+	var x=document.getElementById("sel_op4").value
+	var y=document.getElementById("demo4").name = x;
+  //alert(y);
+}
+function myFunction5() {
+	var x=document.getElementById("sel_op5").value
+	var y=document.getElementById("demo5").name = x;
+  //alert(y);
+}
+function myFunction6() {
+	var x=document.getElementById("sel_op6").value
+	var y=document.getElementById("demo6").name = x;
+  //alert(y);
+}
+function myFunction7() {
+	var x=document.getElementById("sel_op7").value
+	var y=document.getElementById("demo7").name = x;
+  //alert(y);
+}
+function myFunction8() {
+	var x=document.getElementById("sel_op8").value
+	var y=document.getElementById("demo8").name = x;
+  //alert(y);
+}function myFunction9() {
+	var x=document.getElementById("sel_op9").value
+	var y=document.getElementById("demo9").name = x;
+  //alert(y);
+	var x1=document.getElementById("sel_op18").value
+	var y1=document.getElementById("demo18").name = x1;
+}
+function myFunction10() {
+	var x=document.getElementById("sel_op10").value
+	var y=document.getElementById("demo10").name = x;
+  //alert(y);
+}
+function myFunction11() {
+	var x=document.getElementById("sel_op11").value
+	var y=document.getElementById("demo11").name = x;
+  //alert(y);
+}
+function myFunction12() {
+	var x=document.getElementById("sel_op12").value
+	var y=document.getElementById("demo12").name = x;
+  //alert(y);
+}
+function myFunction13() {
+	var x=document.getElementById("sel_op13").value
+	var y=document.getElementById("demo13").name = x;
+  //alert(y);
+}
+function myFunction14() {
+	var x=document.getElementById("sel_op14").value
+	var y=document.getElementById("demo14").name = x;
+  //alert(y);
+}
+function myFunction15() {
+	var x=document.getElementById("sel_op15").value
+	var y=document.getElementById("demo15").name = x;
+  //alert(y);
+}
+</script>
+
+  </body>
+</html>

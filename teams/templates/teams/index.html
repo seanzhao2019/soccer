@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load staticfiles %}
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Welcome to The DBMS of UEFA EURO 2012</title>
+
+    <meta name="description" content="Source code generated using layoutit.com">
+
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="page-header">
+				<h1>
+					WELCOME TO THE DBMS OF UEFA EURO 2012
+				</h1>
+			</div>
+			<div class="jumbotron">
+				<h2>
+					2012年歐洲足球錦標賽（UEFA Euro 2012）
+				</h2>
+				<p>
+					2012年歐洲足球錦標賽（UEFA Euro 2012）是第十四屆歐洲足球錦標賽，於2012年6月8日–7月1日在波蘭及烏克蘭舉行，這屆賽事是繼2000年、2008年後第三次由兩個國家共同協辦。共有16支球隊參加了會內賽賽事。除主辦國波蘭及烏克蘭外，其餘14隊由預選賽來產生。值得一提的是，今屆歐洲足球錦標賽的主色為紫色。
+				</p>
+
+			</div>
+			<div class="row">
+
+				<div class="col-md-4">
+					<img alt="Bootstrap Image Preview" src="{% static 'teams/euro2012logo.jpg' %}" class="img-circle">
+				</div>
+				<div class="col-md-8">
+					<h2>
+						系統說明
+					</h2>
+					<p>
+						此次project是用於管理2012年歐洲足球錦標賽（UEFA Euro 2012）小組賽的資料庫管理系統，具有SQL直接輸入指令，與固化的TRANSACTION鍵指令2大功能。分別部署在QUERY頁面和TRANSACTION頁面。
+					</p>
+				</div>
+			</div>
+			<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+                
+                                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                            <ul class="nav nav-pills">
+                                                <li class="active">
+                                                    <a href="/home">HOME</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/query">QUERY</a>
+                                                </li>
+                                                 <li>
+                                                    <a href="/transaction">TRANSACTION</a>
+                                                </li>
+ <!--                                               <li class="dropdown">
+                                                     <a href="/transaction" class="dropdown-toggle" data-toggle="dropdown">TRANSACTION<strong class="caret"></strong></a>
+                                                    <ul class="dropdown-menu">
+                                                        <li>
+                                                            <a href="/transaction">Match</a>
+                                                        </li>
+                                                        <li class="divider">
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">Team</a>
+                                                        </li>
+                                                        <li class="divider">
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">Player</a>
+                                                        </li>
+                                                        <li class="divider">
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">Coach</a>
+                                                        </li>
+                                                        <li class="divider">
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">Sponsor</a>   
+                                                        </li>
+-->
+                                                        <li class="divider">
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                        
+                                        </div>
+                                       </nav>
+		</div>
+	</div>
+</div>
+
+    <script src="{% static 'teams/js/jquery.min.js' %}"></script>
+    <script src="{% static 'teams/js/bootstrap.min.js' %}"></script>
+
+  </body>
+</html>
